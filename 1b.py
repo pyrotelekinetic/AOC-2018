@@ -984,24 +984,21 @@ raw = """-1
 parsed = raw.split("\n")
 
 sums = 0
+n = 0
 steps = []
+done = False
 
-for x in parsed:
-    sums += int(x)
-    steps.append(sums)
+while not done:
+    for x in parsed:
+        sums += int(x)
+        print(sums)
 
-#print(steps)
-
-ans = ""
-old = []
-while ans == "":
-    for y in steps:
-        if y in old:
-            ans = y
-            print(y)
+        if sums in steps:
+            print(sums)
+            done = True
             break
-        else:
-            old.append(y)
 
-print(ans)
+        else:
+            steps.append(sums)
+
 wait = input("waiting...")
