@@ -1361,11 +1361,22 @@ for thing in raw:
 
 fabric = [[0 for y in range(3000)] for x in range(3000)] #create 2d list structure
 
+overlap = 0
+
 for prop in cuts:
     x = int(prop[1])
     y = int(prop[2])
-    fabric[x][y] += 1
+    width = int(prop[3])
+    height = int(prop[4])
 
-print(fabric[286][440])
+    for n2 in range(width):
+        for n3 in range(height):
+            fabric[x][y] += 1
+            if fabric[x][y] > 1:
+                overlap += 1
+            y += 1
+        x += 1
+
+print(overlap)
 
 #wait = input("waiting...")
