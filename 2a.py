@@ -1,4 +1,4 @@
-raw ="""cnjxpritdzhubeseewfmqagkul
+raw = """cnjxpritdzhubeseewfmqagkul
 cwyxpgitdzhvbosyewfmqagkul
 cnfxpritdzhebosywwfmqagkul
 cnjxpritdzgvbosyawfiqagkul
