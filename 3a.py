@@ -1,3 +1,5 @@
+import re
+
 raw = """#1 @ 286,440: 19x24
 #2 @ 430,120: 20x14
 #3 @ 250,746: 20x17
@@ -1346,21 +1348,24 @@ raw = """#1 @ 286,440: 19x24
 #1346 @ 284,9: 26x12
 #1347 @ 515,443: 13x14
 #1348 @ 571,488: 22x10
-#1349 @ 979,160: 19x17""".split("\n")
+#1349 @ 979,160: 19x17""".split("\n") #parse raw input into list
+
 cuts = []
-
-import re
 n = 0
-for x in raw:
-    cuts.insert(n, re.split("#|@|,|:|x|\s", x))
-    del cuts[n][6]
-    del cuts[n][3]
-    del cuts[n][2]
-    del cuts[n][0]
+for thing in raw:
+    cuts.insert(n, re.split("#|@|,|:|x|\s", thing)) #parse raw into nested list
+    del cuts[n][6], cuts[n][3], cuts[n][2], cuts[n][0] #delete empty indexes
     n += 1
+        #sample of final output: cuts[0] == ['1', '286', '440', '19', '24']
+        #                                   [id, x, y, width, height]
 
-print(cuts[0])
-print(cuts[1])
-print(cuts[2])
-fabric = [None]
-wait = input("waiting...")
+fabric = [[0 for y in range(3000)] for x in range(3000)] #create 2d list structure
+
+for prop in cuts:
+    x = int(prop[1])
+    y = int(prop[2])
+    fabric[x][y] += 1
+
+print(fabric[286][440])
+
+#wait = input("waiting...")
