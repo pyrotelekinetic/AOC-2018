@@ -1353,30 +1353,30 @@ raw = """#1 @ 286,440: 19x24
 cuts = []
 n = 0
 for thing in raw:
-    cuts.insert(n, re.split("#|@|,|:|x|\s", thing)) #parse raw into nested list
+    cuts.insert(n, re.split("#|@|,|:|x|\s", thing)) #parse list into nested list
     del cuts[n][6], cuts[n][3], cuts[n][2], cuts[n][0] #delete empty indexes
     n += 1
         #sample of final output: cuts[0] == ['1', '286', '440', '19', '24']
         #                                   [id, x, y, width, height]
 
-fabric = [[0 for y in range(3000)] for x in range(3000)] #create 2d list structure
+fabric = [[0 for y in range(2000)] for x in range(2000)] #create 2d list structure
 
 overlap = 0
 
-for prop in cuts:
+for prop in cuts: #iterate through each proposal
     x = int(prop[1])
     y = int(prop[2])
     width = int(prop[3])
     height = int(prop[4])
 
-    for n2 in range(width):
-        for n3 in range(height):
+    for n2 in range(width): #iterate through x values
+        for n3 in range(height): #iterate through every y value each x value
             fabric[x][y] += 1
             if fabric[x][y] > 1:
                 overlap += 1
             y += 1
+        y = int(prop[2]) #reset y to lowest value before beginning next x value
         x += 1
 
 print(overlap)
-
-#wait = input("waiting...")
+wait = input("waiting...")
