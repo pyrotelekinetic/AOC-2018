@@ -274,4 +274,3 @@ for bid in parsed:
 
 ans = twos * threes
 print(ans)
-wait = input("waiting...")

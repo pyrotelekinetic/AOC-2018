@@ -249,7 +249,20 @@ cnjxprityjhvbomyewfmqagkul
 cnjbpritdzhvbosyywfmqagkuf
 cnjxprrtdzhvbosyewgmqagtul""".split("\n")
 
+
 for bid in allids:
-    
+    check = bid 
+    checkin = index(bid)
+    for bid1 in allids:
+        if index(bid1) > checkin:
+            for num in range(26):
+                off = 0
+                if bid1[num] != check[num]:
+                    off += 1
+            if off == 1:
+                theone = 
+                break
+
 
 wait = input("waiting")
+
